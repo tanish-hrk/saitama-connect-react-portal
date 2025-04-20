@@ -76,8 +76,8 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
               <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&q=80" 
-                alt="Brain scan visualization"
+                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=600&q=80" 
+                alt="Healthcare professional using laptop"
                 className="rounded-2xl border-4 border-white/10 shadow-2xl w-[450px] relative z-10"
               />
             </div>
@@ -89,3 +89,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
