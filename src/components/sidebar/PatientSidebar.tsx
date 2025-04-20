@@ -1,14 +1,15 @@
 
 import React from "react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter, SidebarHeader } from "@/components/ui/sidebar";
-import { Home, Calendar, File, Heart, MessageSquare, Users } from "lucide-react";
+import { Home, Calendar, FileText, Brain, MessageSquare, AlertCircle } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const menu = [
   { path: "/patient", label: "Dashboard", icon: Home },
   { path: "/patient/appointments", label: "Appointments", icon: Calendar },
-  { path: "/patient/records", label: "Medical Records", icon: File },
-  { path: "/patient/prescriptions", label: "Prescriptions", icon: Heart },
+  { path: "/patient/reports", label: "Medical Reports", icon: FileText },
+  { path: "/patient/symptoms", label: "Symptoms", icon: AlertCircle },
+  { path: "/patient/scans", label: "Brain Scans", icon: Brain },
   { path: "/patient/messages", label: "Messages", icon: MessageSquare },
 ];
 
@@ -19,7 +20,7 @@ export default function PatientSidebar() {
       <SidebarHeader>
         <div className="flex items-center gap-2">
           <img src="/favicon.ico" className="w-7 h-7 rounded" alt="Logo"/>
-          <span className="font-bold text-lg text-blue-700">Saitama</span>
+          <span className="font-bold text-lg text-blue-700">NeuroDetect</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -51,7 +52,7 @@ export default function PatientSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="text-xs text-gray-400 pl-2">Saitama Connect v1.0</div>
+        <div className="text-xs text-gray-400 pl-2">NeuroDetect v1.0</div>
       </SidebarFooter>
     </Sidebar>
   );

@@ -26,7 +26,7 @@ const HeroSection = () => {
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-              Advanced AI 
+              NeuroDetect 
               <span className="block text-blue-300">Brain Tumor Detection</span>
               Technology
             </h1>
@@ -89,4 +89,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-

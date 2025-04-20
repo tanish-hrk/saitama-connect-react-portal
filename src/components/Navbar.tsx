@@ -35,7 +35,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2">
             <Brain size={30} className={`${scrolled ? 'text-blue-600' : 'text-white'}`} />
             <span className={`text-2xl font-extrabold ${scrolled ? 'text-blue-700' : 'text-white'}`}>
-              SaitamaHealth
+              NeuroDetect
             </span>
           </Link>
 
