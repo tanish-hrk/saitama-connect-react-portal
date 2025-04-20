@@ -1,59 +1,71 @@
 
 import React from 'react';
+import { Star } from 'lucide-react';
 
-const TestimonialSection = () => {
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Patient",
-      image: "https://randomuser.me/api/portraits/women/65.jpg",
-      text: "Saitama Connect has transformed how I manage my healthcare. Booking appointments and accessing my records is now so simple!"
-    },
-    {
-      name: "Dr. Michael Chen",
-      role: "Cardiologist",
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
-      text: "As a doctor, this platform has streamlined my practice. I can easily manage appointments and securely access patient information."
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Patient",
-      image: "https://randomuser.me/api/portraits/women/45.jpg",
-      text: "The telemedicine feature has been a lifesaver. I can connect with my doctor from the comfort of my home."
-    }
-  ];
-  
-  return (
-    <section className="section-padding bg-white">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Users Say</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover how Saitama Connect is making a difference in healthcare management.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-blue-50 p-6 rounded-lg shadow-md relative">
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="w-16 h-16 rounded-full border-4 border-white"
-                />
-              </div>
-              <div className="pt-8 text-center">
-                <p className="text-gray-700 italic mb-4">"{testimonial.text}"</p>
-                <h4 className="text-lg font-semibold">{testimonial.name}</h4>
-                <p className="text-blue-600">{testimonial.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Patient",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: "Saitama Connect has completely transformed my healthcare routine. It's so easy to book appointments and review my health records now!",
+    stars: 5
+  },
+  {
+    name: "Dr. Michael Chen",
+    role: "Cardiologist",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    text: "This platform is a breakthrough for digital medicine. Managing patient care and appointments has never been easier.",
+    stars: 5
+  },
+  {
+    name: "Emma Rodriguez",
+    role: "Patient",
+    image: "https://randomuser.me/api/portraits/women/45.jpg",
+    text: "I love the telemedicine feature! I can talk to my doctor wherever I am. The support team is fantastic too.",
+    stars: 5
+  }
+];
+
+const TestimonialSection = () => (
+  <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-fuchsia-50 animate-fade-in">
+    <div className="container mx-auto">
+      <div className="text-center mb-14">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-700 to-blue-900 drop-shadow">
+          What Our Users Say
+        </h2>
+        <p className="text-gray-700 max-w-2xl mx-auto text-lg">
+          Real stories from patients and providers making the most of Saitama Connect.
+        </p>
       </div>
-    </section>
-  );
-};
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {testimonials.map((t, i) => (
+          <div
+            key={t.name}
+            className="relative bg-white/90 glass p-8 rounded-2xl shadow-xl text-center flex flex-col items-center animate-fade-in"
+            style={{ animationDelay: `${i * 100 + 100}ms`, animationFillMode: 'both' }}
+          >
+            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
+              <img
+                src={t.image}
+                alt={t.name}
+                className="w-20 h-20 rounded-full border-4 border-fuchsia-100 shadow-xl object-cover"
+              />
+            </div>
+            <div className="pt-12">
+              <p className="text-gray-800 italic mb-4 block">"{t.text}"</p>
+              <div className="flex items-center justify-center mb-1">
+                {Array.from({ length: t.stars }).map((_, idx) => (
+                  <Star key={idx} size={18} className="text-yellow-400 fill-yellow-300" />
+                ))}
+              </div>
+              <h4 className="text-lg font-bold">{t.name}</h4>
+              <span className="text-blue-600 text-sm">{t.role}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default TestimonialSection;
