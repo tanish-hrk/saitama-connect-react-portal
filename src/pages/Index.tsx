@@ -9,13 +9,13 @@ import Footer from '../components/Footer';
 import ScrollPopNavbar from '../components/ScrollPopNavbar';
 
 const Index = () => (
-  <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#F1F0FB] via-[#d6bcfa] to-[#7E69AB]">
+  <div className="min-h-screen flex flex-col">
     <Navbar />
     <ScrollPopNavbar />
     <main className="flex-1">
       <HeroSection />
-      <PortalSection />
       <FeatureSection />
+      <PortalSection />
       <TestimonialSection />
     </main>
     <Footer />

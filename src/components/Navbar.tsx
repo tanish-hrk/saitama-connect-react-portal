@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Home, User, Settings, Menu } from 'lucide-react';
+import { Menu, X, ChevronDown, Brain } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -16,40 +17,88 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-white/75 shadow-xl backdrop-blur-lg border-b border-blue-200"
-          : "bg-white/40 shadow-none border-b border-transparent"
+          ? "bg-white/95 shadow-lg"
+          : "bg-transparent"
       }`}
-      style={{
-        backdropFilter: "blur(18px)",
-        borderRadius: '0 0 2rem 2rem',
-        borderTop: 'none',
-        borderWidth: '0 0 2px 0',
-      }}
     >
-      <div className="container mx-auto flex justify-between items-center py-3 px-4 md:px-8 lg:px-16">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="bg-gradient-to-r from-[#7E69AB] to-[#1EAEDB] bg-clip-text text-transparent text-2xl font-black tracking-tight drop-shadow">Saitama Connect</span>
-        </Link>
-        <div className="hidden md:flex space-x-7 items-center">
-          <Link to="/" className={`hover:text-fuchsia-700 transition-colors font-bold ${location.pathname === "/" ? "text-fuchsia-700 underline underline-offset-4" : "text-blue-900"}`}><Home size={18} className="inline mr-1" />Home</Link>
-          <Link to="/about" className={`hover:text-fuchsia-700 transition-colors font-bold ${location.pathname === "/about" ? "text-fuchsia-700 underline underline-offset-4" : "text-blue-900"}`}><Settings size={16} className="inline mr-1" />About</Link>
-          <Link to="/contact" className={`hover:text-fuchsia-700 transition-colors font-bold ${location.pathname === "/contact" ? "text-fuchsia-700 underline underline-offset-4" : "text-blue-900"}`}>Contact</Link>
-          <Button asChild variant="outline" className="border-fuchsia-600 text-fuchsia-700 hover:bg-fuchsia-50 transition-all font-semibold">
-            <Link to="/login"><User size={16} className="inline mr-1" />Login</Link>
-          </Button>
-          <Button asChild className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow font-semibold">
-            <Link to="/register">Register</Link>
-          </Button>
-        </div>
-        <div className="md:hidden">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <Brain size={30} className={`${scrolled ? 'text-blue-600' : 'text-white'}`} />
+            <span className={`text-2xl font-extrabold ${scrolled ? 'text-blue-700' : 'text-white'}`}>
+              SaitamaHealth
+            </span>
+          </Link>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <Link to="/" className={`font-medium hover:text-blue-500 transition-colors ${scrolled ? (location.pathname === "/" ? "text-blue-600" : "text-gray-800") : "text-white"}`}>
+              Home
+            </Link>
+            <Link to="/about" className={`font-medium hover:text-blue-500 transition-colors ${scrolled ? (location.pathname === "/about" ? "text-blue-600" : "text-gray-800") : "text-white"}`}>
+              About
+            </Link>
+            <div className="relative group">
+              <button className={`flex items-center font-medium group-hover:text-blue-500 transition-colors ${scrolled ? "text-gray-800" : "text-white"}`}>
+                Services <ChevronDown size={16} className="ml-1" />
+              </button>
+              <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                <div className="bg-white rounded-lg shadow-xl p-3 border border-gray-100">
+                  <Link to="/brain-scan" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-md">Brain Scan Analysis</Link>
+                  <Link to="/telemedicine" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-md">Telemedicine</Link>
+                  <Link to="/symptom-check" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-md">Symptom Checker</Link>
+                </div>
+              </div>
+            </div>
+            <Link to="/contact" className={`font-medium hover:text-blue-500 transition-colors ${scrolled ? (location.pathname === "/contact" ? "text-blue-600" : "text-gray-800") : "text-white"}`}>
+              Contact
+            </Link>
+          </div>
+
+          {/* Action buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <Button asChild variant="outline" className={`rounded-full px-6 ${scrolled ? "border-blue-600 text-blue-600 hover:bg-blue-50" : "border-white text-white hover:bg-white/10"}`}>
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button asChild className="bg-blue-600 hover:bg-blue-700 rounded-full px-6">
+              <Link to="/register">Register</Link>
+            </Button>
+          </div>
+
           {/* Mobile menu button */}
-          <Button variant="ghost" size="icon" className="text-fuchsia-700">
-            <Menu size={24} />
-          </Button>
+          <div className="lg:hidden">
+            <Button variant="ghost" size="icon" onClick={toggleMobileMenu} className={scrolled ? "text-blue-600" : "text-white"}>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`lg:hidden bg-white shadow-xl overflow-hidden transition-all duration-300 ${mobileMenuOpen ? "max-h-96" : "max-h-0"}`}>
+        <div className="container mx-auto px-6 py-4 space-y-4">
+          <Link to="/" className="block py-2 font-medium text-gray-800 hover:text-blue-600">Home</Link>
+          <Link to="/about" className="block py-2 font-medium text-gray-800 hover:text-blue-600">About</Link>
+          <Link to="/services" className="block py-2 font-medium text-gray-800 hover:text-blue-600">Services</Link>
+          <Link to="/contact" className="block py-2 font-medium text-gray-800 hover:text-blue-600">Contact</Link>
+          
+          <div className="flex flex-col space-y-3 pt-3 border-t border-gray-100">
+            <Button asChild variant="outline" className="w-full justify-center rounded-full">
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button asChild className="w-full justify-center bg-blue-600 hover:bg-blue-700 rounded-full">
+              <Link to="/register">Register</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </nav>

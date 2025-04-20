@@ -2,63 +2,85 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import { Brain } from 'lucide-react';
+import { Heart, Brain, Shield, PlusCircle } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="relative py-24 px-4 md:py-32 lg:px-24 bg-gradient-to-br from-[#F1F0FB] via-[#d6bcfa] to-[#7E69AB] overflow-hidden">
-      {/* BLURRED BRAIN HEALTH BG */}
+    <section className="relative h-screen flex items-center overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 -z-10">
-        <img
-          src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=1600&q=80"
-          alt="Healthcare professional holding brain scan"
-          className="object-cover w-full h-full brightness-[0.75] blur-[6px]"
+        <img 
+          src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=1600&q=80" 
+          alt="Healthcare background"
+          className="w-full h-full object-cover"
         />
-        {/* SVG brain wave shape (subtle) */}
-        <svg width="100%" height="100%" className="absolute inset-0 -z-10 opacity-25 pointer-events-none" viewBox="0 0 1440 500" fill="none">
-          <path
-            d="M0,320 Q360,260 600,350 T1440,310 V500 H0 Z"
-            fill="#9b87f5"
-          />
-        </svg>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#d6bcfa88] via-[#fff8] to-[#9b87f588]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
       </div>
-      {/* MAIN CONTENT */}
-      <div className="container mx-auto relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-20">
-        {/* LEFT side content */}
-        <div className="max-w-2xl text-center md:text-left animate-slide-down">
-          <div className="inline-flex items-center mb-4 bg-white/50 px-4 py-1.5 rounded-full shadow-lg ring-2 ring-blue-100">
-            <Brain size={20} className="text-fuchsia-600 mr-2" />
-            <span className="uppercase text-xs font-semibold text-fuchsia-700 tracking-wide">AI Brain Tumor Detection</span>
+
+      <div className="container mx-auto px-6 lg:px-12 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-8">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <Brain size={18} className="text-blue-300 mr-2" />
+              <span className="text-white/90 text-sm font-medium">Advanced Brain Tumor Detection</span>
+            </div>
+            
+            <h1 className="text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              Advanced AI 
+              <span className="block text-blue-300">Brain Tumor Detection</span>
+              Technology
+            </h1>
+            
+            <p className="text-lg text-white/80 max-w-lg">
+              Early detection saves lives. Our AI-powered system provides rapid, accurate brain tumor assessments, helping doctors make timely decisions.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6">
+                <Link to="/register">Get Started</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 py-6">
+                <Link to="/about">Learn More</Link>
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                  <Brain size={20} className="text-blue-300" />
+                </div>
+                <span className="text-white/90 text-sm">AI Detection</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <Heart size={20} className="text-green-300" />
+                </div>
+                <span className="text-white/90 text-sm">Fast Results</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <Shield size={20} className="text-purple-300" />
+                </div>
+                <span className="text-white/90 text-sm">Secure Data</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <PlusCircle size={20} className="text-red-300" />
+                </div>
+                <span className="text-white/90 text-sm">24/7 Support</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7E69AB] via-[#9b87f5] to-[#1EAEDB] drop-shadow" style={{ WebkitTextStroke: '1px #fff' }}>
-              Smarter Healthcare. <br />
-              Earlier Brain Tumor Detection.
-            </span>
-          </h1>
-          <p className="mt-6 mb-8 text-lg md:text-xl text-blue-950 font-medium bg-white/60 rounded-xl px-5 py-2 shadow-lg inline-block">
-            Empowering patients and doctors to detect brain tumors early with AI-powered scans and easy-to-use reports. Secure, private, and always patient-centered.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-5 justify-center md:justify-start">
-            <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-xl text-lg px-7 py-4 font-bold">
-              <Link to="/register">Get Started</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-fuchsia-600 text-fuchsia-700 bg-white/80 hover:bg-fuchsia-50 shadow-lg font-semibold">
-              <Link to="/about">How it Works</Link>
-            </Button>
-          </div>
-        </div>
-        {/* RIGHT side: doctor/scan image in glassy card */}
-        <div className="flex-shrink-0 relative max-w-md w-full md:w-[340px] drop-shadow-2xl">
-          <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 glass relative backdrop-blur-xl" style={{ minHeight: 350 }}>
-            <img
-              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&q=80"
-              alt="Medical professional reviewing brain scan"
-              className="w-full h-full object-cover"
-            />
-            {/* subtle highlight ring */}
-            <div className="absolute inset-0 rounded-3xl ring-4 ring-[#7E69AB80] pointer-events-none animate-pulse" />
+          
+          <div className="hidden lg:flex items-center justify-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&q=80" 
+                alt="Brain scan visualization"
+                className="rounded-2xl border-4 border-white/10 shadow-2xl w-[450px] relative z-10"
+              />
+            </div>
           </div>
         </div>
       </div>

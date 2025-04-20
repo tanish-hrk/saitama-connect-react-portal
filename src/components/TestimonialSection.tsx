@@ -4,62 +4,62 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Patient",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
-    text: "Saitama Connect has completely transformed my healthcare routine. It's so easy to book appointments and review my health records now!",
+    name: "Dr. Emily Johnson",
+    role: "Neurologist",
+    image: "https://randomuser.me/api/portraits/women/32.jpg",
+    text: "The AI detection system has transformed how we diagnose brain tumors. The accuracy and speed are remarkable, allowing us to begin treatment much sooner.",
     stars: 5
   },
   {
-    name: "Dr. Michael Chen",
-    role: "Cardiologist",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    text: "This platform is a breakthrough for digital medicine. Managing patient care and appointments has never been easier.",
+    name: "Michael Chen",
+    role: "Patient",
+    image: "https://randomuser.me/api/portraits/men/42.jpg",
+    text: "After experiencing severe headaches, I used SaitamaHealth's platform. They detected a small tumor early, and thanks to this early diagnosis, my treatment was successful.",
     stars: 5
   },
   {
-    name: "Emma Rodriguez",
-    role: "Patient",
+    name: "Dr. Sarah Williams",
+    role: "Radiologist",
     image: "https://randomuser.me/api/portraits/women/45.jpg",
-    text: "I love the telemedicine feature! I can talk to my doctor wherever I am. The support team is fantastic too.",
+    text: "As a radiologist, I appreciate the detailed analysis reports. The AI catches subtle patterns that could be missed in conventional screenings.",
     stars: 5
   }
 ];
 
 const TestimonialSection = () => (
-  <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-fuchsia-50 animate-fade-in">
+  <section className="py-20 px-6 lg:px-12 bg-gradient-to-b from-white to-blue-50">
     <div className="container mx-auto">
-      <div className="text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-700 to-blue-900 drop-shadow">
-          What Our Users Say
-        </h2>
-        <p className="text-gray-700 max-w-2xl mx-auto text-lg">
-          Real stories from patients and providers making the most of Saitama Connect.
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="text-blue-900 text-4xl font-bold mb-4">What Medical Professionals & Patients Say</h2>
+        <p className="text-gray-600 text-lg">
+          The impact of our brain tumor detection technology on patients and healthcare providers.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {testimonials.map((t, i) => (
-          <div
-            key={t.name}
-            className="relative bg-white/90 glass p-8 rounded-2xl shadow-xl text-center flex flex-col items-center animate-fade-in"
-            style={{ animationDelay: `${i * 100 + 100}ms`, animationFillMode: 'both' }}
-          >
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <img
-                src={t.image}
-                alt={t.name}
-                className="w-20 h-20 rounded-full border-4 border-fuchsia-100 shadow-xl object-cover"
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className="bg-white rounded-xl shadow-md p-8 relative">
+            <div className="flex justify-center mb-6">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.name} 
+                className="w-20 h-20 rounded-full border-4 border-blue-100 object-cover"
               />
             </div>
-            <div className="pt-12">
-              <p className="text-gray-800 italic mb-4 block">"{t.text}"</p>
-              <div className="flex items-center justify-center mb-1">
-                {Array.from({ length: t.stars }).map((_, idx) => (
-                  <Star key={idx} size={18} className="text-yellow-400 fill-yellow-300" />
+            
+            <div className="text-center mb-4">
+              <div className="flex justify-center">
+                {[...Array(testimonial.stars)].map((_, i) => (
+                  <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
-              <h4 className="text-lg font-bold">{t.name}</h4>
-              <span className="text-blue-600 text-sm">{t.role}</span>
+            </div>
+            
+            <p className="text-gray-700 text-center italic mb-6">"{testimonial.text}"</p>
+            
+            <div className="text-center">
+              <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+              <p className="text-blue-600 text-sm">{testimonial.role}</p>
             </div>
           </div>
         ))}
