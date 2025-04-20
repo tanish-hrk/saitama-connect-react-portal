@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import ScrollPopNavbar from '../components/ScrollPopNavbar';
 
 const Index = () => (
-  <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-yellow-50">
+  <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#F1F0FB] via-[#d6bcfa] to-[#7E69AB]">
     <Navbar />
     <ScrollPopNavbar />
     <main className="flex-1">
