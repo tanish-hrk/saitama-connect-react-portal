@@ -1,7 +1,7 @@
 
-import React from 'react';
-import DashboardLayout from '@/components/DashboardLayout';
-import PatientDashboard from '@/components/dashboard/PatientDashboard';
+import React from "react";
+import DashboardLayout from "@/components/DashboardLayout";
+import PatientDashboard from "@/components/dashboard/PatientDashboard";
 
 const PatientPortal = () => {
   return (
