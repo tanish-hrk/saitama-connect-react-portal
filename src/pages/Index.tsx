@@ -6,10 +6,12 @@ import PortalSection from '../components/PortalSection';
 import FeatureSection from '../components/FeatureSection';
 import TestimonialSection from '../components/TestimonialSection';
 import Footer from '../components/Footer';
+import ScrollPopNavbar from '../components/ScrollPopNavbar';
 
 const Index = () => (
   <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-yellow-50">
     <Navbar />
+    <ScrollPopNavbar />
     <main className="flex-1">
       <HeroSection />
       <PortalSection />
