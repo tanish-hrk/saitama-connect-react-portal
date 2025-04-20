@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Heart, Calendar, Video, ClipboardList, Bell, UserCheck, ShieldHeart, BarChart } from 'lucide-react';
+import { Heart, Calendar, Video, ClipboardList, Bell, UserCheck, ShieldAlert, BarChart } from 'lucide-react';
 
 const features = [
   {
@@ -11,7 +10,7 @@ const features = [
   {
     title: "Secure Medical Records",
     description: "Store and access your full medical history securely.",
-    icon: <ShieldHeart size={36} className="text-pink-600" />
+    icon: <ShieldAlert size={36} className="text-pink-600" />
   },
   {
     title: "1-Click Appointments",
